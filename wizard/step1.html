@@ -1,0 +1,9 @@
+<h3>Step 1</h3>
+<form ng-submit="" name="step1" novalidate>
+	<input type="text" ng-model="user.login" placeholder="Your login" required/>
+	<input type="email" ng-model="user.email" placeholder="Your email" required/>
+	<input type="password" ng-model="user.password" placeholder="Your password" required/>
+	<input type="password" ng-model="user.password_confirmation" placeholder="Your password confirmation" data-match="user.password" name="confirmation_field" required/>
+    <span ng-show="step1.confirmation_field.$error.match">Passwords do not match!</span>
+	<input type="submit" class="button" ng-disabled="step1.$pristine || step1.$invalid" value="Next" ui-sref="wizard.step2"/>
+</form>

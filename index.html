@@ -1,0 +1,21 @@
+<html>
+<head>
+
+	<script type='text/javascript' src='angular.min.js'></script>
+	<script type='text/javascript' src="angular-ui-router.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+
+</head>
+<body ng-app="wizardApp">
+	<div>
+	  <div ng-controller="WizardSignupController">
+	    <h2>Signup wizard</h2>
+	    <div ui-view></div>
+	    <button ui-sref="wizard.step1" ng-disabled="is_current_state('wizard.step1')" ng-class="is_current_state('wizard.step1')">Step 1</button>
+    	<button ui-sref="wizard.step2" ng-disabled="!step_2_validity['step1'] || is_current_state('wizard.step2')" ng-class="is_current_state('wizard.step2')">Step 2</button>
+    	<button ui-sref="wizard.step3" ng-disabled="!step_2_validity['step2']" ng-class="is_current_state('wizard.step3')">Step 3</button>
+    	<button ui-sref="wizard.finish" ng-disabled="!step_2_validity['step3']">Finish</button>
+	  </div>
+	</div>
+</body>
+</html>

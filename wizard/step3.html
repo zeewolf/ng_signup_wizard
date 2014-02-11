@@ -1,0 +1,8 @@
+<form ng-submit name="step3" novalidate>
+    <input type="text" ng-pattern="/^\(\d{3}\) \d{3}-\d{2}-\d{2}$/" ng-model="user.phone" placeholder="phone" />
+    <input type="text" ng-model="user.country" placeholder="Country" required />
+    <input type="text" ng-model="user.city" placeholder="City" required />
+    <input type="text" ng-model="user.address1" required placeholder="Address 1" name="address1"/>
+    <input type="text" ng-model="user.address2" ng-disabled="step3.address1.$invalid" placeholder="Address 2" />
+    <input type="submit" class="button" ng-disabled="step3.$pristine || step3.$invalid" value="Next" ui-sref="wizard.finish"/>
+</form>
