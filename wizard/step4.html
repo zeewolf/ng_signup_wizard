@@ -1,11 +1,13 @@
 <h3>Congrats! You signed up!</h3>
-<h5>Your name: {{ user.firstname }} {{user.lastname}}</h5>
-<h5>Your email: {{ user.email }}</h5>
-<h5>Your login: {{ user.login }}</h5>
-<h5>Your phone: {{ user.phone }}</h5>
-<h5>Your address: {{ user.country }}</h5>
-<h5>Your address: {{ user.city }}</h5>
-<h5>Your address: {{ user.address1 }}</h5>
-<h5>Your address: {{ user.address2 }}</h5>
-<h5>Your address: {{ user.extra_info }}</h5>
-<a class="button" ui-sref="wizard.step1">Start over</a>
+<div>
+    <p>Your name: {{ user.firstname }} {{user.lastname}}</p>
+    <p>Your email: {{ user.email }}</p>
+    <p>Your login: {{ user.login }}</p>
+    <p>Your birtday: {{ user.birthday | date:'yyyy-MM-dd' }}</p>
+    <p>Your phone: {{ user.phone }}</p>
+    <p>Your country: {{ user.country }}</p>
+    <p>Your city: {{ user.city }}</p>
+    <p>Your address: {{ user.address1 }} {{ user.address2 }}</p>
+    <p>Your extra info: {{ user.extra_info }}</p>
+</div>
+<button ui-sref="wizard.step1">Start over</button>

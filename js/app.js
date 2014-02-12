@@ -1,5 +1,6 @@
 app = angular.module('wizardApp', [
 	'ui.router',
+    'ui.date',
 	'wizardApp.controllers'
 	]);
 app.config(['$stateProvider', '$urlRouterProvider',
@@ -85,6 +86,10 @@ angular.module('wizardApp.controllers', [])
 
         $scope.signup = function() {
             console.log($scope.user); // submit data from $scope.user model
+        };
+
+        $scope.is_available_state = function(state_name){
+            return $rootScope.step_2_validity[$rootScope.step_2_previous[state_name]]
         };
 
         $scope.is_current_state = function(name) {

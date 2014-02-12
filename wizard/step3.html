@@ -1,8 +1,32 @@
 <form ng-submit name="step3" novalidate>
-    <input type="text" ng-pattern="/^\(\d{3}\) \d{3}-\d{2}-\d{2}$/" ng-model="user.phone" placeholder="phone" />
-    <input type="text" ng-model="user.country" placeholder="Country" required />
-    <input type="text" ng-model="user.city" placeholder="City" required />
-    <input type="text" ng-model="user.address1" required placeholder="Address 1" name="address1"/>
-    <input type="text" ng-model="user.address2" ng-disabled="step3.address1.$invalid" placeholder="Address 2" />
+    <div>
+        <input type="text" ng-pattern="/^\(\d{3}\) \d{3}-\d{2}-\d{2}$/" ng-model="user.phone" name="phone" placeholder="Phone (format: (###) ###-##-##)" />
+        <span class="error_message" ng-show="step3.phone.$invalid">Invalid phone format (must be (###) ###-##-##)</span>
+    </div>
+    <div>
+        <input type="text" ng-model="user.country" name="country" placeholder="Country" required />
+        <span class="error_message" ng-show="step3.country.$invalid">required</span>
+    </div>
+    <div>
+        <input type="text" ng-model="user.city" placeholder="City" name="city" required />
+        <span class="error_message" ng-show="step3.city.$invalid">required</span>
+    </div>
+    <div>
+        <input type="text" ng-model="user.address1" required placeholder="Address 1" name="address1"/>
+        <span class="error_message" ng-show="step3.address1.$invalid">required</span>
+        <input type="text" ng-model="user.address2" ng-disabled="step3.address1.$invalid" placeholder="Address 2" />
+    </div>
+    <fieldset>
+        <h4>Social networks</h4>
+        <input type="text" ng-model="user.soc_facebook" placeholder="Facebook" />
+        <br />
+        <input type="text" ng-model="user.soc_vk" placeholder="Vkontakte" />
+        <br />
+        <input type="text" ng-model="user.soc_twitter" placeholder="Twitter" />
+        <br />
+        <input type="text" ng-model="user.soc_instagram" placeholder="Instagram" />
+        <br />
+        <input type="text" ng-model="user.soc_gplus" placeholder="Google +" />
+    </fieldset>
     <input type="submit" class="button" ng-disabled="step3.$pristine || step3.$invalid" value="Next" ui-sref="wizard.finish"/>
 </form>

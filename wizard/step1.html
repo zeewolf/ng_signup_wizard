@@ -1,9 +1,20 @@
 <h3>Step 1</h3>
 <form ng-submit="" name="step1" novalidate>
-	<input type="text" ng-model="user.login" placeholder="Your login" required/>
-	<input type="email" ng-model="user.email" placeholder="Your email" required/>
-	<input type="password" ng-model="user.password" placeholder="Your password" required/>
-	<input type="password" ng-model="user.password_confirmation" placeholder="Your password confirmation" data-match="user.password" name="confirmation_field" required/>
-    <span ng-show="step1.confirmation_field.$error.match">Passwords do not match!</span>
+    <div>
+        <input type="text" ng-model="user.login" name="user_login" placeholder="Your login" required/>
+        <span class="error_message" ng-show="step1.user_login.$invalid && step1.user_login.$dirty">Login required</span>
+    </div>
+    <div>
+        <input type="email" ng-model="user.email" name="user_email" placeholder="Your email" required/>
+        <span class="error_message"ng-show="step1.user_email.$invalid  && step1.user_email.$dirty">Email invalid</span>
+    </div>
+    <div>
+        <input type="password" ng-model="user.password" name="user_password" placeholder="Your password" required/>
+        <span class="error_message" ng-show="step1.user_password.$invalid && step1.user_password.$dirty">Password required</span>
+    </div>
+    <div>
+        <input type="password" ng-model="user.password_confirmation" placeholder="Your password confirmation" data-match="user.password" name="confirmation_field" required/>
+        <span class="error_message" ng-show="step1.confirmation_field.$error.match">Passwords do not match!</span>
+    </div>
 	<input type="submit" class="button" ng-disabled="step1.$pristine || step1.$invalid" value="Next" ui-sref="wizard.step2"/>
 </form>

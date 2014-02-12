@@ -1,10 +1,24 @@
 <h3>Step 2</h3>
 <form ng-submit="" name="step2" novalidate>
-	<input type="text" ng-model="user.firstname" placeholder="Your name" required/>
-	<input type="text" ng-model="user.lastname" placeholder="Your last name" required/>
-	<input type="text" ng-model="user.birthday" placeholder="Your birthday" required/>
-    <input type="radio" ng-model="user.gender" value="male" id="gender_male" required /><label for="gender_male">male</label>
-    <input type="radio" ng-model="user.gender" value="female" id="gender_female" required/><label for="gender_female">female</label>
-    <textarea ng-model="user.extra_info"></textarea>
-	<input type="submit" class="button" ng-disabled="step2.$pristine || step2.$invalid" value="Next" ui-sref="wizard.finish"/>
+	<div>
+        <input type="text" ng-model="user.firstname" name="firstname" placeholder="Your name" required/>
+        <span class="error_message" ng-show="step2.firstname.$invalid"> required</span>
+    </div>
+    <div>
+        <input type="text" ng-model="user.lastname" name="lastname" placeholder="Your last name" required/>
+        <span class="error_message" ng-show="step2.lastname.$invalid"> required</span>
+    </div>
+    <div>
+        <input ui-date ng-model="user.birthday" placeholder="Your birthday" />
+    </div>
+    <div>
+        <input type="radio" ng-model="user.gender" value="male" id="gender_male" required /><label for="gender_male">male</label>
+        <input type="radio" ng-model="user.gender" value="female" id="gender_female" required/><label for="gender_female">female</label>
+        <span class="error_message" ng-show="step2.gender.$invalid"> required</span>
+    </div>
+    <div>
+        <textarea ng-model="user.extra_info" ng-maxlength="512" placeholder="Extra information" cols="40" rows="25"></textarea>
+        <span>symbols left: {{512 - user.extra_info.length}}</span>
+    </div>
+	<input type="submit" class="button" ng-disabled="step2.$pristine || step2.$invalid" value="Next" ui-sref="wizard.step3"/>
 </form>
